@@ -1,7 +1,8 @@
 "use client";
-// import { Label } from "@mui/icons-material";
-// import { makeStyles } from '@material-ui/core/styles';
-
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 import {
   Autocomplete,
   Grid,
@@ -11,7 +12,7 @@ import {
   Button,
   Container,
   InputLabel,
-  Divider,
+  Box,
 } from "@mui/material";
 
 export function RateEngine() {
@@ -69,7 +70,7 @@ export function RateEngineFilter() {
     </Grid>
   );
 }
-export function Autocompletecomponentorigin() {
+export function Autocompletecomponentorigin(props) {
   const location = [
     { label: "China" },
     { label: "US" },
@@ -115,7 +116,7 @@ export function Autocompletecomponentorigin() {
 export function RateEngineChild() {
   return (
     <Container sx={{ mt: "20px" }}>
-      <Paper elevation={1} sx={{ background: "#F3F3F3", height: "800px" }}>
+      <Paper elevation={1} sx={{ background: "#F3F3F3", height: "400px" }}>
         <Papercomponent></Papercomponent>
       </Paper>
     </Container>
@@ -330,15 +331,11 @@ export function FinalGrid() {
       <Typography sx={{ color: "#00A9FF", p: "10px" }}>
         Valid till: 21 Nov 2021
       </Typography>
-      <InputLabel
-        sx={{ color: "#FF5B22", fontWeight: "bold"}}
-      >
+      <InputLabel sx={{ color: "#FF5B22", fontWeight: "bold" }}>
         $23,032
       </InputLabel>
       <br></br>
-      <InputLabel
-        sx={{ color: "#7D7C7C", fontWeight: "bold"}}
-      >
+      <InputLabel sx={{ color: "#7D7C7C", fontWeight: "bold" }}>
         $436.00
       </InputLabel>
       <Typography
@@ -358,8 +355,172 @@ export function FinalGrid() {
   );
 }
 
-// export function chargesComponent(){
-// return(
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
 
-// );
-// }
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
+
+export function BasicTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <Container>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            aria-label="basic tabs example"
+          >
+            <Tab label="Charges" {...a11yProps(0)} />
+            <Tab label="Schedule" {...a11yProps(1)} />
+            <Tab label="Demurrage and Detention" {...a11yProps(2)} />
+          </Tabs>
+        </Box>
+        <CustomTabPanel value={value} index={0}>
+          <RateEngineCharges></RateEngineCharges>
+          <RateEngineCharges></RateEngineCharges>
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={1}>
+          Schedule
+        </CustomTabPanel>
+        <CustomTabPanel value={value} index={2}>
+          Demurrage and Detention
+        </CustomTabPanel>
+      </Box>
+    </Container>
+  );
+}
+
+export function RateEngineCharges(props) {
+  return (
+      <div>
+        <Grid
+          container
+          spacing={2}
+          sx={{ backgroundColor: "#D8D9DA", p: "5px" }}
+        >
+          <Grid item xs={6}>
+            Ocean Freight Charges
+          </Grid>
+          <Grid item xs={2}>
+            Charge Code
+          </Grid>
+          <Grid item xs={2}>
+            Currency
+          </Grid>
+          <Grid item xs={2}>
+            Tarriff
+          </Grid>
+        </Grid>
+        <hr color="red"></hr>
+        <Grid container spacing={2} sx={{ backgroundColor: "#D8D9DA" }}>
+          <Grid item xs={9}></Grid>
+          <Grid item xs={3} sx={{ p: "5px" }}>
+            40HC
+          </Grid>
+        </Grid>
+      </div>
+     
+  );
+}
+
+export function RateEngineChargesAction(){
+  return(
+    <div>
+          <RateEngineCharges></RateEngineCharges>
+
+    </div>
+    
+  );
+}
+
+{/* <div>
+<Grid
+  container
+  spacing={2}
+  sx={{ backgroundColor: "#D8D9DA", p: "5px", mt: "20px" }}
+>
+  <Grid item xs={6}>
+Origin mandatory charges         
+</Grid>
+  <Grid item xs={2}>
+    Charge Code
+  </Grid>
+  <Grid item xs={2}>
+    Currency
+  </Grid>
+  <Grid item xs={1}>
+    Tarriff
+  </Grid>
+  <Grid item xs={1}>
+    Action
+  </Grid>
+</Grid>
+<hr color="red"></hr>
+<Grid container spacing={2} sx={{ backgroundColor: "#D8D9DA" }}>
+  <Grid item xs={9}></Grid>
+  <Grid item xs={3} sx={{ p: "5px" }}>
+    40HC
+  </Grid>
+</Grid>
+</div>
+<div>
+<Grid
+  container
+  spacing={2}
+  sx={{ backgroundColor: "#D8D9DA", p: "5px", mt: "20px" }}
+>
+  <Grid item xs={6}>
+    Ocean Freight Charges
+  </Grid>
+  <Grid item xs={2}>
+    Charge Code
+  </Grid>
+  <Grid item xs={2}>
+    Currency
+  </Grid>
+  <Grid item xs={2}>
+    Tarriff
+  </Grid>
+</Grid>
+<hr color="red"></hr>
+<Grid container spacing={2} sx={{ backgroundColor: "#D8D9DA" }}>
+  <Grid item xs={9}></Grid>
+  <Grid item xs={3} sx={{ p: "5px" }}>
+    40HC
+  </Grid>
+</Grid>
+</div> */}
