@@ -430,7 +430,7 @@ export function RateEngineCharges(props) {
         <Grid
           container
           spacing={2}
-          sx={{ backgroundColor: "#D8D9DA", p: "5px" }}
+          sx={{ backgroundColor: "#D8D9DA", p: "5px" ,mt:'5px'}}
         >
           <Grid item xs={6}>
             Ocean Freight Charges
@@ -461,66 +461,9 @@ export function RateEngineChargesAction(){
   return(
     <div>
           <RateEngineCharges></RateEngineCharges>
-
+          
     </div>
     
   );
 }
 
-{/* <div>
-<Grid
-  container
-  spacing={2}
-  sx={{ backgroundColor: "#D8D9DA", p: "5px", mt: "20px" }}
->
-  <Grid item xs={6}>
-Origin mandatory charges         
-</Grid>
-  <Grid item xs={2}>
-    Charge Code
-  </Grid>
-  <Grid item xs={2}>
-    Currency
-  </Grid>
-  <Grid item xs={1}>
-    Tarriff
-  </Grid>
-  <Grid item xs={1}>
-    Action
-  </Grid>
-</Grid>
-<hr color="red"></hr>
-<Grid container spacing={2} sx={{ backgroundColor: "#D8D9DA" }}>
-  <Grid item xs={9}></Grid>
-  <Grid item xs={3} sx={{ p: "5px" }}>
-    40HC
-  </Grid>
-</Grid>
-</div>
-<div>
-<Grid
-  container
-  spacing={2}
-  sx={{ backgroundColor: "#D8D9DA", p: "5px", mt: "20px" }}
->
-  <Grid item xs={6}>
-    Ocean Freight Charges
-  </Grid>
-  <Grid item xs={2}>
-    Charge Code
-  </Grid>
-  <Grid item xs={2}>
-    Currency
-  </Grid>
-  <Grid item xs={2}>
-    Tarriff
-  </Grid>
-</Grid>
-<hr color="red"></hr>
-<Grid container spacing={2} sx={{ backgroundColor: "#D8D9DA" }}>
-  <Grid item xs={9}></Grid>
-  <Grid item xs={3} sx={{ p: "5px" }}>
-    40HC
-  </Grid>
-</Grid>
-</div> */}
