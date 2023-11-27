@@ -3,6 +3,9 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import { RateEngineDemurge } from "../components/DemurrageAndDetentionRateEngine/RateEngineDemurgeComponent";
+
 import {
   Autocomplete,
   Grid,
@@ -102,10 +105,6 @@ export function Autocompletecomponentorigin(props) {
         ml: "10px",
         // border: "2px solid #B4B4B3",
         borderRadius: "5px",
-        // "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-        //   borderWidth: 2,
-        //   borderRadius: "10px",
-        // },
       }}
       options={location}
       renderInput={(params) => <TextField {...params} label="Origin" />}
@@ -118,6 +117,7 @@ export function RateEngineChild() {
     <Container sx={{ mt: "20px" }}>
       <Paper elevation={1} sx={{ background: "#F3F3F3", height: "400px" }}>
         <Papercomponent></Papercomponent>
+        <Papercomponent sx={{ mt: "50px" }}></Papercomponent>
       </Paper>
     </Container>
   );
@@ -410,60 +410,91 @@ export function BasicTabs() {
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
-          <RateEngineCharges></RateEngineCharges>
-          <RateEngineCharges></RateEngineCharges>
+
+          <Box sx={{ width: "100%" }}>
+              <CustomTabPanel value={value} index={0}>
+              {chargesData.map((data, index) => (
+                <RateEngineCharges
+                  key={index}
+                  chargesTitle={data.title}
+                  actionText={data.actionText}
+                  icon={data.icon}
+                />
+              ))}
+            </CustomTabPanel>
+            {/* ... (other code) */}
+          </Box>
         </CustomTabPanel>
         <CustomTabPanel value={value} index={1}>
           Schedule
         </CustomTabPanel>
         <CustomTabPanel value={value} index={2}>
-          Demurrage and Detention
+          <RateEngineDemurge></RateEngineDemurge>
         </CustomTabPanel>
       </Box>
     </Container>
   );
 }
 
+const chargesData = [
+  { title: "Ocean freight Charges" },
+  {
+    title: "Origin Mandatory Charges",
+    actionText: "Action",
+    icon: <AddCircleIcon />,
+  },
+  {
+    title: "Destination Mandatory Charges",
+    actionText: "Action",
+    icon: <AddCircleIcon />,
+  },
+  {
+    title: "Origin Optional Charges",
+    actionText: "Action",
+    icon: <AddCircleIcon />,
+  },
+];
+
 export function RateEngineCharges(props) {
+  const { actionText, icon, chargesTitle } = props;
+
   return (
-      <div>
-        <Grid
-          container
-          spacing={2}
-          sx={{ backgroundColor: "#D8D9DA", p: "5px" ,mt:'5px'}}
-        >
-          <Grid item xs={6}>
-            Ocean Freight Charges
-          </Grid>
-          <Grid item xs={2}>
-            Charge Code
-          </Grid>
-          <Grid item xs={2}>
-            Currency
-          </Grid>
-          <Grid item xs={2}>
-            Tarriff
-          </Grid>
-        </Grid>
-        <hr color="red"></hr>
-        <Grid container spacing={2} sx={{ backgroundColor: "#D8D9DA" }}>
-          <Grid item xs={9}></Grid>
-          <Grid item xs={3} sx={{ p: "5px" }}>
-            40HC
-          </Grid>
-        </Grid>
-      </div>
-     
-  );
-}
-
-export function RateEngineChargesAction(){
-  return(
     <div>
-          <RateEngineCharges></RateEngineCharges>
-          
+      <Grid
+        container
+        spacing={2}
+        sx={{ backgroundColor: "#D8D9DA", p: "5px", mt: "10px" }}
+      >
+        <Grid item xs={6}>
+          {chargesTitle}
+        </Grid>
+        <Grid item xs={2}>
+          Charge Code
+        </Grid>
+        <Grid item xs={2}>
+          Currency
+        </Grid>
+        <Grid item xs={1}>
+          Tarriff
+        </Grid>
+        <Grid item xs={1}>
+          {actionText}
+        </Grid>
+      </Grid>
+      <hr />
+      <Grid container spacing={2} sx={{ backgroundColor: "#D8D9DA", p: "5px" }}>
+        <Grid item xs={10}></Grid>
+        <Grid item xs={2}>
+          40HG
+        </Grid>
+        <Grid item xs={11}></Grid>
+        <Grid item xs={1}>
+          {icon &&
+            React.cloneElement(icon, {
+              sx: { color: "#2B3499", fontSize: "40px" },
+            })}
+        </Grid>
+      </Grid>
     </div>
-    
   );
 }
-

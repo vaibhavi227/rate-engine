@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {RateEngine,RateEngineChild,BasicTabs} from "../components/page";
+import {RateEngine,RateEngineChild,BasicTabs} from "../components/page"; 
 
 export default function Home() {
 
@@ -9,6 +9,7 @@ export default function Home() {
          
           <RateEngine></RateEngine>
           <RateEngineChild></RateEngineChild>
+         
           <BasicTabs></BasicTabs>
           </div>
           </main>
