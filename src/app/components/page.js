@@ -6,6 +6,9 @@ import Tab from "@mui/material/Tab";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { RateEngineDemurge } from "../components/DemurrageAndDetentionRateEngine/RateEngineDemurgeComponent";
 
+
+
+
 import {
   Autocomplete,
   Grid,
@@ -141,6 +144,7 @@ export function Papercomponent() {
 }
 
 export function FirstGrid() {
+
   return (
     <Grid container>
       <Grid item xs={12}>
@@ -312,48 +316,51 @@ export function DetailsGrid() {
 
 export function FinalGrid() {
   return (
-    <Grid container>
-      <Button
-        variant="contained"
-        sx={{
-          backgroundColor: "#E0F4FF",
-          borderRadius: "8px",
-          height: "10px",
-          textTransform: "lowercase",
-          color: "black",
-          fontSize: "10px",
-          textAlign: "center",
-          ml: "50px",
-        }}
-      >
-        Best Value
-      </Button>
-      <Typography sx={{ color: "#00A9FF", p: "10px" }}>
-        Valid till: 21 Nov 2021
-      </Typography>
-      <InputLabel sx={{ color: "#FF5B22", fontWeight: "bold" }}>
-        $23,032
-      </InputLabel>
-      <br></br>
-      <InputLabel sx={{ color: "#7D7C7C", fontWeight: "bold" }}>
-        $436.00
-      </InputLabel>
-      <Typography
-        sx={{
-          color: "#7D7C7C",
-          fontSize: "12px",
-          mt: "5px",
-          textAlign: "center",
-        }}
-      >
-        (incl local charges)
-      </Typography>
-      <Button variant="contained" sx={{ p: "5px", textTransform: "lowercase" }}>
-        Proceed
-      </Button>
+    <Grid container justifyContent="center" alignItems="center" height="100%">
+      <Grid item sx={{ textAlign: 'center' }}>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#E0F4FF",
+            borderRadius: "8px",
+            height: "10px",
+            textTransform: "lowercase",
+            color: "black",
+            fontSize: "10px",
+            textAlign: "center",
+            mb: '10px',
+          }}
+        >
+          Best Value
+        </Button>
+        <Typography sx={{ color: "#00A9FF", p: "5px" }}>
+          Valid till: 21 Nov 2021
+        </Typography>
+        <InputLabel sx={{ color: "#FF5B22", fontWeight: "bold" }}>
+          $23,032
+        </InputLabel>
+        <InputLabel sx={{ color: "#7D7C7C", fontWeight: "bold" }}>
+          $436.00
+        </InputLabel>
+        <Typography
+          sx={{
+            color: "#7D7C7C",
+            fontSize: "12px",
+            mt: "5px",
+          }}
+        >
+          (incl local charges)
+        </Typography>
+        <Button src="">
+          Proceed
+        </Button>
+        
+      </Grid>
     </Grid>
   );
 }
+
+
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -404,14 +411,13 @@ export function BasicTabs() {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Charges" {...a11yProps(0)} />
-            <Tab label="Schedule" {...a11yProps(1)} />
-            <Tab label="Demurrage and Detention" {...a11yProps(2)} />
+            <Tab sx={{fontSize:"12px"}} label="Charges" {...a11yProps(0)} />
+            <Tab sx={{fontSize:"12px"}} label="Demurrage and Detention" {...a11yProps(1)} />
           </Tabs>
         </Box>
         <CustomTabPanel value={value} index={0}>
 
-          <Box sx={{ width: "100%" }}>
+          <Box sx={{ width: "100%" ,fontSize:"12px"}}>
               <CustomTabPanel value={value} index={0}>
               {chargesData.map((data, index) => (
                 <RateEngineCharges
@@ -425,10 +431,8 @@ export function BasicTabs() {
             {/* ... (other code) */}
           </Box>
         </CustomTabPanel>
+        
         <CustomTabPanel value={value} index={1}>
-          Schedule
-        </CustomTabPanel>
-        <CustomTabPanel value={value} index={2}>
           <RateEngineDemurge></RateEngineDemurge>
         </CustomTabPanel>
       </Box>
@@ -497,4 +501,5 @@ export function RateEngineCharges(props) {
       </Grid>
     </div>
   );
-}
+}   
+

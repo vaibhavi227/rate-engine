@@ -23,7 +23,7 @@ export function DemmurgeCard({ demurgeTitle, numberOfDays, usageContainer }) {
             <Typography sx={{ fontSize: 14 }} color="text.secondary" >
               {demurgeTitle}
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            <Typography sx={{ mb: 1.5,mt:3 }} color="text.secondary">
               {numberOfDays} Days
             </Typography>
             <Typography>
@@ -37,7 +37,7 @@ export function DemmurgeCard({ demurgeTitle, numberOfDays, usageContainer }) {
 
 
   const cardsData = [
-    { demurgeTitle:"Free Time at Origin Per Container",
+    { demurgeTitle:"Free Time at Origin Per Container is",
       numberOfDays:"7 ",
       usageContainer:"CONTAINER USAGE",
     },
@@ -73,3 +73,5 @@ export function DemmurgeCard({ demurgeTitle, numberOfDays, usageContainer }) {
       </Box>
     );
   };
+
+  
