@@ -6,6 +6,7 @@ import Tab from "@mui/material/Tab";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { RateEngineDemurge } from "@/DemurrageAndDetentionRateEngine/RateEngineDemurgeComponent";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+
 import {
   Autocomplete,
   Grid,
@@ -16,34 +17,38 @@ import {
   Container,
   InputLabel,
   Box,
+  
 } from "@mui/material";
 
 export function RateEngine() {
   return (
     <Container>
-      <Paper elevation={1}>
-        <Grid container display="flex" flexDirection="row">
-          <Grid item xs={11}>
+      <Paper elevation={1} >
+        <Grid container display="flex" flexDirection="row"  mx={5} sx={{mb:1}}>
+          <Grid item xs={10}>
             <Typography
-              sx={{ color: "#362FD9", fontWeight: "bold", p: "10px" }}
+              sx={{ color: "#362FD9", fontWeight: "bold",}}
             >
               Find the best Quotes
             </Typography>
           </Grid>
-          <Grid item xs={1}>
-            <Typography sx={{ fontSize: "16px", m: "10px" }}>
+          <Grid item xs={2}>
+            <Typography sx={{ fontSize: "16px" }}>
               Filters<KeyboardArrowDownIcon></KeyboardArrowDownIcon>
             </Typography>
           </Grid>
         </Grid>
+        <Box mx={5}>
         <RateEngineFilter></RateEngineFilter>
+        </Box>
+        
       </Paper>
     </Container>
   );
 }
 export function RateEngineFilter() {
   
-    const autocompleteData = [
+  const autocompleteData = [
   { labelName: 'Origin', options: ['Rotterdam', 'Shanghai'] },
   { labelName: 'Destination', options: ['Rotterdam', 'Shanghai'] },
   { labelName: 'Load', options: ['20STDX1,40STDX1'] },
@@ -56,7 +61,7 @@ export function RateEngineFilter() {
             <Grid item xs={3} key={index}>
               <Autocompletecomponentorigin
                labelName={data.labelName} 
-               options={data.options} />
+               options={data.options}/>
             </Grid>
           ))}
         </Grid>
@@ -83,7 +88,16 @@ export function Autocompletecomponentorigin(props) {
       disablePortal
       id="combo-box-demo"
       options={options}
-      sx={{ width: 230}}
+      
+      sx={{ width: 220,marginBottom:"10px" , '& fieldset': {
+
+        borderWidth: '2px', 
+      },
+      '&:hover fieldset': {
+        borderColor: 'grey !important', 
+      },
+      
+      }}
       renderInput={(params) => <TextField {...params} label={labelName} />}
     />
   );
@@ -92,9 +106,9 @@ export function Autocompletecomponentorigin(props) {
 export function RateEngineChild() {
   return (
     <Container>
-      <Paper elevation={1} sx={{ background: "#F3F3F3", height: "400px" }}>
+
         <Papercomponent></Papercomponent>
-      </Paper>
+
     </Container>
   );
 }
@@ -105,6 +119,7 @@ const data = [
 
 export function Papercomponent() {
   return (
+
     <div>
       {data.map((item, index) => (
         <PaperComponent key={index} data={item} />
@@ -114,9 +129,9 @@ export function Papercomponent() {
 }
 export function PaperComponent({data}) {
   return (
-    <Paper sx={{ m: "10px" }}>
+    <Paper sx={{ m: "10px"}} variant="outlined">
       <Grid container>
-        <Grid container xs={2} spacing={1} sx={{ textAlign: "center" }}>
+        <Grid container xs={2} spacing={1} sx={{ textAlign: "center"}}>
           <FirstGrid></FirstGrid>
         </Grid>
         <Grid item xs={8} spacing={1}>
@@ -169,14 +184,13 @@ export function FirstGrid() {
           sx={{
             backgroundColor: "#dadada",
             borderRadius: "8px",
-            height: "30px",
-            width: "60px",
             color: "black",
             fontSize: "10px",
             fontWeight: "bold",
+            p:1
           }}
         >
-          cy-cy
+          CY-CY
         </Button>
       </Grid>
     </Grid>
@@ -425,7 +439,6 @@ export function BasicTabs() {
                 />
               ))}
             </CustomTabPanel>
-            {/* ... (other code) */}
           </Box>
         </CustomTabPanel>
         
@@ -437,12 +450,36 @@ export function BasicTabs() {
   );
 }
 
+export function CustomTabPanelNew(){
+  return(
+    <>
+    <CustomTabPanel value={value} index={0}>
+
+<Box sx={{ width: "100%" ,fontSize:"12px"}}>
+    <CustomTabPanel value={value} index={0}>
+    {chargesData.map((data, index) => (
+      <RateEngineCharges
+        key={index}
+        chargesTitle={data.title}
+        actionText={data.actionText}
+        icon={data.icon}
+      />
+    ))}
+  </CustomTabPanel>
+</Box>
+</CustomTabPanel>
+
+<CustomTabPanel value={value} index={1}>
+<RateEngineDemurge></RateEngineDemurge>
+</CustomTabPanel></>
+  );
+}
 const chargesData = [
   { title: "Ocean freight Charges" },
   {
     title: "Origin Mandatory Charges",
     actionText: "Action",
-    icon: <AddCircleIcon />,
+    icon: <AddCircleIcon/>,
   },
   {
     title: "Destination Mandatory Charges",

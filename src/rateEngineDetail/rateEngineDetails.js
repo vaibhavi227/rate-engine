@@ -20,7 +20,7 @@ export default function DetailsComponentMain() {
           <Typography>Active: Valid till Oct 14, 2022</Typography>
         </Grid>
       </Grid>
-      <Typography variant="h6" sx={{ color: "#3f51b5", mt: 2 }}>
+      <Typography variant="h6" sx={{ color: "#3f51b5", mt: 2}}>
         Shipment Details
       </Typography>
       <Grid container >

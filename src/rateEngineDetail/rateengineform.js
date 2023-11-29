@@ -14,13 +14,14 @@ import DetailsComponentMain from '@/rateEngineDetail/rateEngineDetails'
 import RateEngineFormAndLogo, { FormFieldDetailSellingSchedule } from './FormFieldDetail';
 export default function FormComponent() {
   return (
-    <Container>
+    <Container sx={{backgroundColor:"white"}}>
 
       <DetailsComponentMain></DetailsComponentMain>
       <RateEngineFormAndLogo></RateEngineFormAndLogo>
        <hr></hr>
        <FormFieldDetailSellingSchedule></FormFieldDetailSellingSchedule>
        <hr></hr>
+
       <FormHeading heading1={"Ocean Freight margin"}></FormHeading>
       <RateEngineFormField></RateEngineFormField>
       <hr></hr>
