@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {RateEngine,RateEngineChild,BasicTabs} from "../components/page"; 
-import FormComponent from "../components/rate-engine-details/page"
+import {RateEngine,RateEngineChild,BasicTabs} from "@/page"; 
 export default function Home() {
 
     return (
@@ -9,8 +8,8 @@ export default function Home() {
          
           <RateEngine></RateEngine>
           <RateEngineChild></RateEngineChild>
-          <FormComponent></FormComponent>
           <BasicTabs></BasicTabs>
+          
           </div>
           </main>
     )

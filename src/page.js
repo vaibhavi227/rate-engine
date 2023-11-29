@@ -4,10 +4,8 @@ import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import { RateEngineDemurge } from "../components/DemurrageAndDetentionRateEngine/RateEngineDemurgeComponent";
-
-
-
+import { RateEngineDemurge } from "@/DemurrageAndDetentionRateEngine/RateEngineDemurgeComponent";
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import {
   Autocomplete,
   Grid,
@@ -34,7 +32,7 @@ export function RateEngine() {
           </Grid>
           <Grid item xs={1}>
             <Typography sx={{ fontSize: "16px", m: "10px" }}>
-              Filters
+              Filters<KeyboardArrowDownIcon></KeyboardArrowDownIcon>
             </Typography>
           </Grid>
         </Grid>
@@ -44,95 +42,90 @@ export function RateEngine() {
   );
 }
 export function RateEngineFilter() {
-  return (
-    <Grid container spacing={2}>
-      {/* First section with 10 columns */}
-      <Grid container item xs={10} spacing={2}>
-        <Grid item xs={3}>
-          <Autocompletecomponentorigin></Autocompletecomponentorigin>
+  
+    const autocompleteData = [
+  { labelName: 'Origin', options: ['Rotterdam', 'Shanghai'] },
+  { labelName: 'Destination', options: ['Rotterdam', 'Shanghai'] },
+  { labelName: 'Load', options: ['20STDX1,40STDX1'] },
+  { labelName: 'Shipment', options: ['pharma,2000kg'] },
+];
+    return (
+      <Grid container spacing={2}>
+        <Grid container item xs={10} spacing={2}>
+          {autocompleteData.map((data, index) => (
+            <Grid item xs={3} key={index}>
+              <Autocompletecomponentorigin
+               labelName={data.labelName} 
+               options={data.options} />
+            </Grid>
+          ))}
         </Grid>
-        <Grid item xs={3}>
-          <Autocompletecomponentorigin></Autocompletecomponentorigin>
-        </Grid>
-        <Grid item xs={3}>
-          <Autocompletecomponentorigin></Autocompletecomponentorigin>
-        </Grid>
-        <Grid item xs={3}>
-          <Autocompletecomponentorigin></Autocompletecomponentorigin>
+  
+        <Grid container item xs={2} spacing={2}>
+          <Grid item xs={12} sx={{ textAlign: "center" }}>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: "#FF5B22", mt: "10px" }}
+            >
+              Find Quotes
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
-
-      <Grid container item xs={2} spacing={2}>
-        <Grid item xs={12} sx={{ textAlign: "center" }}>
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: "#FF5B22", mt: "10px" }}
-          >
-            Find Quotes
-          </Button>
-        </Grid>
-      </Grid>
-    </Grid>
   );
 }
+
 export function Autocompletecomponentorigin(props) {
-  const location = [
-    { label: "China" },
-    { label: "US" },
-    { label: "Shanghai" },
-    { label: "Rotterdam" },
-    { label: "China" },
-    { label: "India" },
-    { label: "Pakistan" },
-    { label: "Hong kong" },
-    { label: "China" },
-    { label: "Canada" },
-    { label: "China" },
-    { label: "mexico" },
-    { label: "brazil" },
-    { label: "Russia" },
-    { label: "North Korea" },
-    { label: "South Korea" },
-    { label: "Australia" },
-    { label: "China" },
-    { label: "Argentina" },
-    { label: "peru" },
-    { label: "chile" },
-  ];
+  const { labelName, options } = props;
+
   return (
     <Autocomplete
+      disablePortal
       id="combo-box-demo"
-      sx={{
-        mb: "10px",
-        ml: "10px",
-        // border: "2px solid #B4B4B3",
-        borderRadius: "5px",
-      }}
-      options={location}
-      renderInput={(params) => <TextField {...params} label="Origin" />}
-    ></Autocomplete>
+      options={options}
+      sx={{ width: 230}}
+      renderInput={(params) => <TextField {...params} label={labelName} />}
+    />
   );
-}
+};
 
 export function RateEngineChild() {
   return (
-    <Container sx={{ mt: "20px" }}>
+    <Container>
       <Paper elevation={1} sx={{ background: "#F3F3F3", height: "400px" }}>
         <Papercomponent></Papercomponent>
-        <Papercomponent sx={{ mt: "50px" }}></Papercomponent>
       </Paper>
     </Container>
   );
 }
+const data = [
+  { service: 'CEM', directButtonText: 'Direct', directButtonColor: '#FF5B22', voyageNumber: '435W' },
+  { service: 'NE 3', directButtonText: 'Contacts', directButtonColor: '#667dff', voyageNumber: '-' }
+];
+
 export function Papercomponent() {
+  return (
+    <div>
+      {data.map((item, index) => (
+        <PaperComponent key={index} data={item} />
+      ))}
+    </div>
+  );
+}
+export function PaperComponent({data}) {
   return (
     <Paper sx={{ m: "10px" }}>
       <Grid container>
         <Grid container xs={2} spacing={1} sx={{ textAlign: "center" }}>
           <FirstGrid></FirstGrid>
         </Grid>
-        <Grid xs={8} spacing={1}>
-          <DetailsGrid></DetailsGrid>
+        <Grid item xs={8} spacing={1}>
+          <DetailsGrid
+            service={data.service}
+            directButtonText={data.directButtonText}
+            directButtonColor={data.directButtonColor}
+            voyageNumber={data.voyageNumber}
+          />
         </Grid>
         <Grid xs={2} spacing={1}>
           <FinalGrid></FinalGrid>
@@ -142,6 +135,8 @@ export function Papercomponent() {
   );
 }
 
+
+
 export function FirstGrid() {
 
   return (
@@ -150,7 +145,7 @@ export function FirstGrid() {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: "green",
+            backgroundColor: "#2ab930",
             borderRadius: "0 0 6px 6px",
             height: "22px",
             width: "40px",
@@ -172,7 +167,7 @@ export function FirstGrid() {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: "#DBDFEA",
+            backgroundColor: "#dadada",
             borderRadius: "8px",
             height: "30px",
             width: "60px",
@@ -188,44 +183,46 @@ export function FirstGrid() {
   );
 }
 
-export function DetailsGrid() {
+const typographyStyles = {
+  fontSize: "12px",
+};
+
+export function DetailsGrid({ service, directButtonText,directButtonColor, voyageNumber }) {
   return (
     <Grid container spacing={1}>
+      {/* Left Section */}
       <Grid item xs={4} sx={{ mt: "21px" }}>
-        <InputLabel
-          htmlFor="my-input"
-          sx={{ fontSize: "14px", fontWeight: "bold" }}
-        >
+        <InputLabel htmlFor="my-input" sx={{ fontSize: "14px", fontWeight: "bold" }}>
           ETD: 19/11
         </InputLabel>
-        <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
-          Port 1,INPNQ, India
+        <Typography sx={{ ...typographyStyles, fontWeight: "bold" }}>
+          Port 1, INPNQ, India
         </Typography>
-        <InputLabel sx={{ fontSize: "12px", mt: "5px" }} htmlFor="my-input">
+        <InputLabel sx={{ ...typographyStyles, mt: "5px" }} htmlFor="my-input">
           Contract number
         </InputLabel>
-        <Typography sx={{ fontSize: "12px" }}>12312312312</Typography>
-        <InputLabel sx={{ fontSize: "12px", mt: "5px" }} htmlFor="my-input">
+        <Typography sx={typographyStyles}>12312312312</Typography>
+        <InputLabel sx={{ ...typographyStyles, mt: "5px" }} htmlFor="my-input">
           Vessel Name
         </InputLabel>
-        <Typography sx={{ fontSize: "12px" }}>CMA CMG ZHENG HE</Typography>{" "}
+        <Typography sx={typographyStyles}>CMA CMG ZHENG HE</Typography>
       </Grid>
+
       <Grid item xs={4}>
         <Button
           variant="contained"
           sx={{
-            backgroundColor: "green",
+            backgroundColor: directButtonColor,
             borderRadius: "0 0 6px 6px",
             height: "22px",
             width: "40px",
             textTransform: "lowercase",
-            backgroundColor: "#FF5B22",
           }}
         >
-          Direct
+          {directButtonText}
         </Button>
 
-        <InputLabel sx={{ fontSize: "12px" }}>32 days</InputLabel>
+        <InputLabel sx={typographyStyles}>32 days</InputLabel>
         <Typography>
           <svg
             fill="none"
@@ -240,23 +237,21 @@ export function DetailsGrid() {
             ></path>
           </svg>
         </Typography>
-        <InputLabel sx={{ fontSize: "12px" }} htmlFor="my-input">
+        <InputLabel sx={typographyStyles} htmlFor="my-input">
           Service
         </InputLabel>
-        <Typography sx={{ fontSize: "12px" }}>CEM</Typography>
-        <InputLabel sx={{ fontSize: "12px", pt: "5px" }} htmlFor="my-input">
+        <Typography sx={typographyStyles}>{service}</Typography>
+        <InputLabel sx={{ ...typographyStyles, pt: "5px" }} htmlFor="my-input">
           Voyage Number
         </InputLabel>
-        <Typography sx={{ fontSize: "12px" }}>435W</Typography>
+        <Typography sx={typographyStyles}>{voyageNumber}</Typography>
       </Grid>
+
       <Grid item xs={4} sx={{ mt: "21px" }}>
         <InputLabel sx={{ fontSize: "14px", fontWeight: "bold" }}>
           ETA: 21/12
         </InputLabel>
-        <Typography
-          sx={{ fontSize: "14px", fontWeight: "bold" }}
-          htmlFor="my-input"
-        >
+        <Typography sx={{ ...typographyStyles, fontWeight: "bold" }}>
           PortLand, USPDX, USA
         </Typography>
         <Grid container spacing={2}>
@@ -274,7 +269,7 @@ export function DetailsGrid() {
         <Grid container spacing={2}>
           <Grid item xs={6}></Grid>
           <Grid item xs={6}>
-            <Typography sx={{ fontSize: "12px" }}>Online</Typography>
+            <Typography sx={{ fontSize: "12px" }}></Typography>
           </Grid>
         </Grid>
 
@@ -313,6 +308,9 @@ export function DetailsGrid() {
   );
 }
 
+
+
+
 export function FinalGrid() {
   return (
     <Grid container justifyContent="center" alignItems="center" height="100%">
@@ -320,7 +318,7 @@ export function FinalGrid() {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: "#E0F4FF",
+            backgroundColor: "#e1edfc",
             borderRadius: "8px",
             height: "10px",
             textTransform: "lowercase",
@@ -350,7 +348,7 @@ export function FinalGrid() {
         >
           (incl local charges)
         </Typography>
-        <Button variant="contained" sx={{backgroundColor:"blue",color:"white"}}>
+        <Button href="/rate-engine-details" variant="contained" sx={{backgroundColor:"#3f51b5",color:"white"}}>
           Proceed
         </Button> 
         

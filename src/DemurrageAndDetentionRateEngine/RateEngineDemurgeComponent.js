@@ -1,15 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Paper } from "@mui/material";
 
 export function RateEngineDemurge(){
     return(
-        <Paper elevation={1} sx={{height:"300px"}}>
+        <Paper elevation={1} sx={{height:"200px"}}>
             <RenderedCards></RenderedCards>
         </Paper>
     );
@@ -17,7 +15,7 @@ export function RateEngineDemurge(){
   
 export function DemmurgeCard({ demurgeTitle, numberOfDays, usageContainer }) {
     return (
-      <Card display="flex" flexDirection="column" alignItems="center" sx={{ width: "250px", backgroundColor: "#F1EFEF", m: '2px' }} spacing={2}>
+      <Card display="flex" flexDirection="column" alignItems="center" sx={{ width: "250px", backgroundColor: "#F1EFEF", mt: 2,mx:2 }} spacing={2}>
         <CardContent>
           <Box>
             <Typography sx={{ fontSize: 14 }} color="text.secondary" >

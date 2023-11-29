@@ -10,9 +10,17 @@ import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAuto
 import { styled } from '@mui/system';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import DetailsComponentMain from '@/rateEngineDetail/rateEngineDetails'
+import RateEngineFormAndLogo, { FormFieldDetailSellingSchedule } from './FormFieldDetail';
 export default function FormComponent() {
   return (
     <Container>
+
+      <DetailsComponentMain></DetailsComponentMain>
+      <RateEngineFormAndLogo></RateEngineFormAndLogo>
+       <hr></hr>
+       <FormFieldDetailSellingSchedule></FormFieldDetailSellingSchedule>
+       <hr></hr>
       <FormHeading heading1={"Ocean Freight margin"}></FormHeading>
       <RateEngineFormField></RateEngineFormField>
       <hr></hr>
@@ -31,13 +39,16 @@ export default function FormComponent() {
   );
 }
 export function FormHeading({ heading1,heading2 }) {
+  const headingStyle = {
+    color: "#3f51b5", // Set your desired color here
+  };
   return (
     <Grid container>
       <Grid xs={4}>
-        <h3>{heading1}</h3>
+        <h3 style={headingStyle}>{heading1}</h3>
       </Grid>
       <Grid xs={4}>
-        <h3>{heading2}</h3>
+        <h3 style={headingStyle}>{heading2}</h3>
       </Grid>
     </Grid>
   );
@@ -259,7 +270,7 @@ const CheckboxExample = () => {
 export function ButtonDetails({buttonName, isGrey, isDisabled }) {
   return (
     <Button variant="contained" sx={{
-      backgroundColor: isGrey ? "grey" : "blue",
+      backgroundColor: isGrey ? "#d5d5d5" : "blue",
       color: isGrey ? "orange" : "white",
         }}
     disabled={isDisabled}>
