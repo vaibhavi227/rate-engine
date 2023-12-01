@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
-
 import { Container ,Grid, InputLabel, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -28,7 +27,8 @@ export default function FormComponent() {
       <FormHeading heading1={"Surcharges"} heading2={"ManiFest Adjustment"}></FormHeading>
       <RateEngineFormSurcharges></RateEngineFormSurcharges>
       <hr></hr>
-      <FormHeading heading1={"Details"}></FormHeading>
+      <DetailButtonComponent></DetailButtonComponent>
+      <FormHeading heading1={"Customer Details"}></FormHeading>
       <ParentDetails></ParentDetails>
       <InputLabel sx={{ color: "black"}}>
          Remark if any
@@ -42,7 +42,9 @@ export default function FormComponent() {
 export function FormHeading({ heading1,heading2 }) {
   const headingStyle = {
     color: "#3f51b5", // Set your desired color here
+    fontSize:'16px',
   };
+  
   return (
     <Grid container>
       <Grid xs={4}>
@@ -296,7 +298,6 @@ export function ButtonList({ buttonNames }) {
   );
 }
 
-// Usage in MyComponent
 export function MyButtonComponent() {
   const buttonNames = ["CANCEL", "SHARE"];
 
@@ -307,6 +308,15 @@ export function MyButtonComponent() {
   );
 };
 
+export function DetailButtonComponent() {
+  const buttonNames = ["FLASH", "QUOTE"];
+
+  return (
+    <div>
+      <ButtonList buttonNames={buttonNames} />
+    </div>
+  );
+};
 
 
 
