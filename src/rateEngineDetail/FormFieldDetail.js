@@ -13,6 +13,13 @@ export default function RateEngineFormAndLogo(){
         </Grid>
     );
 }
+const labelStyle = {
+  fontSize: '14px', // Adjust the font size as needed
+};
+
+const valueStyle = {
+  fontSize: '12px', // Adjust the font size as needed
+};
 export function FormFieldDetailsNext(){
     const fieldsArray1 = [
       { labelName: 'Commodity', labelValue: 'FREIGHT ALL KINDS' },
@@ -62,8 +69,8 @@ export function FormFieldDetailsNext(){
         <Grid container spacing={2} key={arrayIndex}>
           {fieldsArray.map((field, index) => (
             <Grid item xs={3} key={index}  sx={{mt:3,mb:2}}>
-              <InputLabel>{field.labelName}</InputLabel>
-              <Typography>{field.labelValue}</Typography>
+              <InputLabel sx={labelStyle} >{field.labelName}</InputLabel>
+              <Typography sx={valueStyle} >{field.labelValue}</Typography>
             </Grid>
           ))}
         </Grid>
