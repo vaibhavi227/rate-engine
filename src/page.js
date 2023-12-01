@@ -22,13 +22,13 @@ import {
 export function RateEngine() {
   return (
     <Container>
-      <Paper elevation={1}>
+      <Paper elevation={0}>
         <Grid
           container
           display="flex"
           flexDirection="row"
           mx={5}
-          sx={{ mb: 1 }}
+          sx={{ mb: 1 }} 
         >
           <Grid item xs={10}>
             <Typography sx={{ color: "#362FD9", fontWeight: "bold" }}>
@@ -36,8 +36,7 @@ export function RateEngine() {
             </Typography>
           </Grid>
           <Grid item xs={2}>
-            
-            <Button variant="" color="primary" sx={{textTransform:'none'}}>
+            <Button variant="" color="primary" sx={{ textTransform: "none" }}>
               Filters<KeyboardArrowDownIcon></KeyboardArrowDownIcon>
             </Button>
           </Grid>
@@ -239,7 +238,7 @@ export function DetailsGrid({
 }) {
   return (
     <Grid container spacing={1}>
-      <Grid item xs={4} sx={{ mt: 4 }}>
+      <Grid item xs={3} sx={{ mt: 4 }}>
         <InputLabel
           htmlFor="my-input"
           sx={{ fontSize: "14px", fontWeight: "bold" }}
@@ -259,7 +258,7 @@ export function DetailsGrid({
         <Typography sx={typographyStyles}>CMA CMG ZHENG HE</Typography>
       </Grid>
 
-      <Grid item xs={4}>
+      <Grid item xs={5} sx={{textAlign:'center'}}>
         <Button
           variant="contained"
           sx={{
@@ -273,25 +272,28 @@ export function DetailsGrid({
           {directButtonText}
         </Button>
 
-        <InputLabel sx={{ ...typographyStyles, mt: 1 }}>32 days</InputLabel>
+        <InputLabel sx={{ ...typographyStyles, mt: 1, }}>32 days</InputLabel>
 
         <Typography>
-        
-    <svg
-    fill="none"
-    width="140"   
-    height="30"   
-    viewBox="0 0 100 10"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-     <path
-      d="m76.707 8.7071c0.3905-0.39052 0.3905-1.0237 0-1.4142l-6.364-6.364c-0.3905-0.39052-1.0236-0.39052-1.4142 0-0.3905 0.39052-0.3905 1.0237 0 1.4142l5.6569 5.6569-5.6569 5.6569c-0.3905 0.3905-0.3905 1.0236 0 1.4142 0.3906 0.3905 1.0237 0.3905 1.4142 0l6.364-6.364zm-76.707 0.29289 76 1e-5v-2l-76-1e-5 -1.7485e-7 2z"
-      fill="#A4A6B3"
-      stroke="#A4A6B3"  
-      stroke-width="0"  
-    ></path>
-  </svg>
+          <svg
+            fill="none"
+            width="192"
+            height="16"
+            viewBox="0 0 192 16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M191.707 8.70709C192.098 8.31657 192.098 7.6834 191.707 7.29288L185.343 0.928916C184.953 0.538392 184.319 0.538392 183.929 0.928916C183.538 1.31944 183.538 1.95261 183.929 2.34313L189.586 7.99998L183.929 13.6568C183.538 14.0474 183.538 14.6805 183.929 15.0711C184.319 15.4616 184.953 15.4616 185.343 15.0711L191.707 8.70709ZM8.74228e-08 9L191 8.99998L191 6.99998L-8.74228e-08 7L8.74228e-08 9Z"
+              fill="#A4A6B3"
+            ></path>
+          </svg>
         </Typography>
+        <Grid container>
+          <Grid xs={4}>
+
+          </Grid>
+          <Grid xs={8}>
+          <Box textAlign={"left"}>
         <InputLabel sx={typographyStyles} htmlFor="my-input">
           Service
         </InputLabel>
@@ -300,6 +302,10 @@ export function DetailsGrid({
           Voyage Number
         </InputLabel>
         <Typography sx={typographyStyles}>{voyageNumber}</Typography>
+        </Box>
+          </Grid>
+        </Grid>
+       
       </Grid>
 
       <Grid item xs={4} sx={{ mt: 4 }}>
@@ -553,8 +559,8 @@ export function RateEngineCharges(props) {
         sx={{
           backgroundColor: "#eff5fa",
           mt: 3,
-          '& .borderBottom': {
-            borderBottom: '1px solid #e0e0e0',
+          "& .borderBottom": {
+            borderBottom: "1px solid #e0e0e0",
           },
         }}
       >
