@@ -12,7 +12,7 @@ export default function DetailsComponentMain() {
     <div>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <Typography variant="h5" sx={{ color: "#f96332" }}>
+          <Typography variant="h6" sx={{color: "#f96332"}}>
             Quotation Details
           </Typography>
         </Grid>
@@ -20,7 +20,7 @@ export default function DetailsComponentMain() {
           <Typography>Active: Valid till Oct 14, 2022</Typography>
         </Grid>
       </Grid>
-      <Typography variant="h6" sx={{ color: "#3f51b5", mt: 2}}>
+      <Typography  sx={{ color: "#3f51b5", mt: 2,mb:2,fontSize:'17px'}}>
         Shipment Details
       </Typography>
       <Grid container >
