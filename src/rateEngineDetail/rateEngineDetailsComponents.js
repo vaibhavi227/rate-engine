@@ -24,6 +24,13 @@ export function FormField({ labelName, labelValue }) {
   );
 }
 
+const labelStyle = {
+  fontSize: "14px", 
+};
+
+const valueStyle = {
+  fontSize: "12px", 
+};
 export function FormFieldDetails() {
   const fieldsArray = [
     { labelName: 'Origin', labelValue: 'Shanghai, CN, CNSHA' },
@@ -33,11 +40,15 @@ export function FormFieldDetails() {
 
   return (
     <div>
-      <Grid container>
-      {fieldsArray.map((field, index) => (
-        <FormField key={index} labelName={field.labelName} labelValue={field.labelValue} />
-      ))}
-    </Grid>
+    <Grid container>
+        {fieldsArray.map((field, index) => (
+          <Grid item xs={4} key={index}>
+            <InputLabel sx={labelStyle}>{field.labelName}</InputLabel>
+            <Typography sx={valueStyle}>{field.labelValue}</Typography>
+          </Grid>
+        ))}
+      </Grid>
+
     </div>
   );
 }
