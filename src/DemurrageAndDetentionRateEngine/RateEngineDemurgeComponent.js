@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Paper } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 
 export function RateEngineDemurge(){
     return(
@@ -15,16 +15,23 @@ export function RateEngineDemurge(){
   
 export function DemmurgeCard({ demurgeTitle, numberOfDays, usageContainer }) {
     return (
-      <Card display="flex" flexDirection="column" alignItems="center" sx={{ width: "250px", backgroundColor: "#eff5fa", mt: 2,mx:2 }} spacing={2}>
+      <Card display="flex" flexDirection="column" alignItems="center" sx={{ width: "250px", backgroundColor: "#eff5fa",mt:4,mx:1 ,borderRadius:5}} spacing={2}>
         <CardContent>
           <Box>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary" >
+            <Typography sx={{ fontSize: 12 }} color="text.secondary" >
               {demurgeTitle}
             </Typography>
-            <Typography sx={{ mb: 1.5,mt:3 }} color="text.secondary">
-              {numberOfDays} Days
-            </Typography>
-            <Typography>
+            <Grid container sx={{ mb: 1,mt:1 }}>
+              <Grid item xs={1} sx={{color:"#3f51b5",fontSize:'28px'}}>
+              {numberOfDays}
+              </Grid>
+              <Grid item xs={11}>
+                <Typography sx={{fontSize:'14px',marginTop:'14px',fontWeight:'bold'}}>Days</Typography>
+              
+              </Grid>
+            </Grid>
+            
+            <Typography sx={{ fontSize: 13,fontWeight:'bold' }}>
               {usageContainer}
             </Typography>
           </Box>
