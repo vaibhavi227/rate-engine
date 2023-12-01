@@ -1,39 +1,35 @@
 import { Grid, InputLabel, Typography } from "@mui/material";
 
-export function ContainerDetails(){
-    return(
-       <>
-       <InputLabel>Container Size and Units</InputLabel>
-       <Grid container spacing={2}>
-          <Grid item xs={4}>
-            <InputLabel sx={{ fontSize: "12px" }} htmlFor="my-input">
-              20GPX1
+const labelStyle = {
+  fontSize: '12px',
+};
+
+const valueStyle = {
+  fontSize: '12px',
+};
+
+export function ContainerDetails() {
+  return (
+    <>
+      <InputLabel sx={{ fontSize: '14px' }}>Container Size and Units</InputLabel>
+      <Grid container spacing={2}>
+        {[1, 2, 3].map((index) => (
+          <Grid item xs={4} key={index}>
+            <InputLabel sx={labelStyle} htmlFor={`my-input-${index}`}>
+              20GPX{index}
             </InputLabel>
           </Grid>
-          <Grid item xs={4}>
-            <InputLabel sx={{ fontSize: "12px" }} htmlFor="my-input">
-              20GPX1
-            </InputLabel>
+        ))}
+      </Grid>
+      <hr/>
+      <Grid container spacing={2}>
+        {['$475', 'N/A', 'N/A'].map((value, index) => (
+          <Grid item xs={4} key={index}>
+            <Typography sx={valueStyle}>{value}</Typography>
           </Grid>
-          <Grid item xs={4}>
-            <InputLabel sx={{ fontSize: "12px" }} htmlFor="my-input">
-              20GPX1
-            </InputLabel>
-          </Grid>
-        </Grid>
-        <hr></hr>
-        <Grid container spacing={2}>
-          <Grid item xs={4}>
-            <Typography sx={{ fontSize: "12px" }}>$475</Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Typography sx={{ fontSize: "12px" }}>N/A</Typography>
-          </Grid>
-          <Grid item xs={4}>
-            <Typography sx={{ fontSize: "12px" }}>N/A</Typography>
-          </Grid>
-        </Grid>
-        <hr></hr>
-       </>
-    );
+        ))}
+      </Grid>
+      <hr />
+    </>
+  );
 }
