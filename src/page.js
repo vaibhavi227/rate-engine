@@ -99,6 +99,7 @@ export function Autocompletecomponentorigin(props) {
         marginBottom: "10px",
         "& fieldset": {
           borderWidth: "2px",
+          borderRadius:"7px",
         },
         "&:hover fieldset": {
           borderColor: "grey !important",
@@ -147,6 +148,7 @@ export function Papercomponent() {
           key={index}
           data={item}
           buttonData={buttonData[index]}
+          
         />
       ))}
     </div>
