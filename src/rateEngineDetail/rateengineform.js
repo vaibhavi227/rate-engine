@@ -307,13 +307,44 @@ export function MyButtonComponent() {
     </div>
   );
 };
-
+export function DetailButtoncolors({ buttonName, isGrey, isDisabled }) {
+  return (
+ 
+  <Button
+  variant="contained"
+  sx={{
+    backgroundColor: isGrey ? 'white' : '#9f9f9f',
+    color: isGrey ? 'black' : 'white',
+  }}
+ 
+>
+  {buttonName}
+</Button>
+  );
+}
+export function DetailsButtonList({ buttonNames }) {
+  return (
+    <Grid container justifyContent="flex-end" spacing={2}>
+      {buttonNames.map((buttonName, index) => (
+        <Grid item key={index}>
+          <DetailButtoncolors
+            buttonName={buttonName}
+            isGrey={index === 0} 
+            isDisabled={index === 1} 
+            style={{ backgroundColor: index === 0 ? 'transparent' : 'grey' }}
+          />
+        </Grid>
+      ))}
+    </Grid>
+  );
+}
 export function DetailButtonComponent() {
   const buttonNames = ["FLASH", "QUOTE"];
 
   return (
     <div>
-      <ButtonList buttonNames={buttonNames} />
+      {/* <DetailsButtonList buttonNames={buttonNames} /> */}
+      <DetailsButtonList buttonNames={buttonNames}/>
     </div>
   );
 };
